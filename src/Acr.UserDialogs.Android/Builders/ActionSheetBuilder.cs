@@ -38,7 +38,7 @@ namespace Acr.UserDialogs.Builders
             if (config.Destructive != null)
                 dlg.SetNegativeButton(config.Destructive.Text, (s, a) => config.Destructive.Action?.Invoke());
 
-            if (config.Cancel != null)
+            if (!string.IsNullOrEmpty(config.Cancel?.Text))
                 dlg.SetNeutralButton(config.Cancel.Text, (s, a) => config.Cancel.Action?.Invoke());
 
             return dlg.Create();
@@ -77,7 +77,7 @@ namespace Acr.UserDialogs.Builders
             if (config.Destructive != null)
                 dlg.SetNegativeButton(config.Destructive.Text, (s, a) => config.Destructive.Action?.Invoke());
 
-            if (config.Cancel != null)
+            if (!string.IsNullOrEmpty(config.Cancel?.Text))
                 dlg.SetNeutralButton(config.Cancel.Text, (s, a) => config.Cancel.Action?.Invoke());
 
             return dlg.Create();

@@ -14,6 +14,7 @@ namespace Acr.UserDialogs
         public static int? DefaultAndroidStyleId { get; set; }
 
         public bool IsCancelable { get; set; }
+        public bool ShowCancelButton { get; set; }
         public string Title { get; set; }
         public string Message { get; set; }
         public int? AndroidStyleId { get; set; } = DefaultAndroidStyleId;

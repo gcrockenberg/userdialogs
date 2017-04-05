@@ -1,4 +1,3 @@
-using System;
 using Android.App;
 using Android.Support.V7.App;
 using AlertDialog = Android.App.AlertDialog;
@@ -26,21 +25,32 @@ namespace Acr.UserDialogs.Builders
             Dialog dialog;
 
             if (config.IsCancelable)
-                dialog = new AppCompatAlertDialog.Builder(activity, config.AndroidStyleId ?? 0)
-                .SetCancelable(false)
-                .SetMessage(config.Message)
-                .SetTitle(config.Title)
-                .SetPositiveButton(config.OkText, (s, a) => config.OnAction(true))
-                .SetNegativeButton(config.NotOkText, (s, a) => config.OnAction(false))
-                .SetNeutralButton(config.CancelText, (s, a) => config.OnCancel())
-                .Create();
+            {
+                if (config.ShowCancelButton)
+                    dialog = new AppCompatAlertDialog.Builder(activity, config.AndroidStyleId ?? 0)
+                    .SetCancelable(false)
+                    .SetMessage(config.Message)
+                    .SetTitle(config.Title)
+                    .SetPositiveButton(config.OkText, (s, a) => config.OnAction(true))
+                    .SetNegativeButton(config.NotOkText, (s, a) => config.OnAction(false))
+                    .SetNeutralButton(config.CancelText, (s, a) => config.OnCancel())
+                    .Create();
+                else
+                    dialog = new AppCompatAlertDialog.Builder(activity, config.AndroidStyleId ?? 0)
+                    .SetCancelable(false)
+                    .SetMessage(config.Message)
+                    .SetTitle(config.Title)
+                    .SetPositiveButton(config.OkText, (s, a) => config.OnAction(true))
+                    .SetNegativeButton(config.NotOkText, (s, a) => config.OnAction(false))
+                    .Create();
+            }
             else
                 dialog = new AppCompatAlertDialog.Builder(activity, config.AndroidStyleId ?? 0)
                 .SetCancelable(false)
                 .SetMessage(config.Message)
                 .SetTitle(config.Title)
                 .SetPositiveButton(config.OkText, (s, a) => config.OnAction(true))
-                .SetNegativeButton(config.CancelText, (s, a) => config.OnAction(false))
+                .SetNegativeButton(config.NotOkText, (s, a) => config.OnAction(false))
                 .Create();
 
             return dialog;

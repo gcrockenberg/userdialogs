@@ -51,7 +51,7 @@ namespace Acr.UserDialogs
 
         public ActionSheetConfig SetCancel(string text = null, Action action = null, IBitmap icon = null)
         {
-            this.Cancel = new ActionSheetOption(text ?? DefaultCancelText, action, icon);
+            this.Cancel = new ActionSheetOption(text, action, icon);
             return this;
         }
 

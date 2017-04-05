@@ -142,6 +142,8 @@ namespace Acr.UserDialogs
 #else
             var picker = new TimePickerControl();
             picker.TimePicker.MinuteIncrement = config.MinuteInterval;
+            if (config.Use24HourClock.HasValue && config.Use24HourClock.Value)
+                picker.TimePicker.ClockIdentifier = "24HourClock";
 
             var popup = this.CreatePopup(picker);
 
